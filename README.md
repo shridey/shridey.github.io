@@ -104,7 +104,7 @@ If you wish to have a sticky (fixed) header, you simply need to add a class of `
 
 The Lead section is pretty straightforward, it contains an h1 for your name and an h2 for your title. It also contains a link that can be used to link to your resume should you wish to add it as well.
 
-If you want your resume to automatically download when the button is clicked instead of opening up in another tab (the default behaviour), add the following code (Thanks to jkfran for the suggestion) in the lead:
+If you want your resume to automatically download when the button is clicked instead of opening up in another tab (the default behaviour), add the following code in the lead:
 
 ```HTML
 <a href="path/to/resume.pdf" download="resume.pdf" class="btn-rounded-white">Download Resume</a>
@@ -290,46 +290,6 @@ You can copy .optional-section-block for each new item you wish you have in the 
 
 The optional section blocks have styling for h3 (the block title), h4, p, and ul tags by default.
 
-## Changelog
-
-### 1.2.2
-
-* Updated dependencies and gulpfile
-
-### 1.2.1
-
-* Updated dependencies and gulpfile
-* Added `no-image` optional class for projects without images (see above for usage)
-
-### 1.2.0
-
-* Added support for optional "Show More Projects" that hides some projects by default if included
-* Added optional sections to display certifications, languages, etc.
-
-### 1.1.3
-
-* Added default favicon to be used or changed
-* Added `sticky` class to make header fixed
-* Updated docs to add image section
-
-### 1.1.2
-
-* Added `no-scroll` class option to header navigation anchor if you want to link to external site
-* Changed contact form input / textarea colours to be based off `$base-color`
-* Changed main background to 100vh so it doesn't overflow if viewport height < 700px
-
-### 1.1.1
-
-* Made input placeholder text more readable
-* Removed timeline line when no JS
-* Added some basic styling to timeline when no JS
-
-### 1.1.0
-
-* Fixed menu toggle on mobile devices
-* Fixed z-index / scrolling issue with mobile menu
-* Mobile menu now closes once a nav element is hit
-
 ## License
 
-Completely free (MIT)! See [LICENSE.md](LICENSE.md) for more.
+Completely free (Apache License 2.0)! See [LICENSE.md](LICENSE.md) for more.
