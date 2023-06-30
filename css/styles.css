@@ -80,7 +80,7 @@ header li {
 
 header a {
     display: block;
-    color: #3498db;
+    color: #3498db; /*#3498db*/
     padding: 10px
 }
 
@@ -92,7 +92,7 @@ header a:hover {
 }
 
 header a:focus {
-    color: #3498db;
+    color: #3498db; /*#3498db*/
     text-decoration: none
 }
 
@@ -115,7 +115,7 @@ header.sticky {
     position: fixed;
     right: 15px;
     top: 10px;
-    color: #3498db;
+    color: #3498db; /*#3498db*/
     font-size: 1.5em;
     z-index: 20;
     padding: 0 7px;
@@ -132,7 +132,7 @@ header.sticky {
     padding-right: 15px;
     padding-top: 10px;
     cursor: pointer;
-    color: #3498db
+    color: #3498db /*#3498db*/
 }
 
 #mobile-menu-close span {
@@ -198,7 +198,7 @@ footer {
 }
 
 .social a:hover {
-    color: #3498db
+    color: #3498db /*#3498db*/
 }
 
 .btn-rounded-white {
@@ -211,7 +211,7 @@ footer {
 }
 
 .btn-rounded-white:hover {
-    color: #3498db;
+    color: #3498db; /*#3498db*/
     background: #fff;
     text-decoration: none
 }
@@ -241,7 +241,7 @@ footer {
     left: 0;
     right: 0;
     margin: 0 auto;
-    background: #3498db
+    background: #3498db /*#3498db*/
 }
 
 .background-alt {
@@ -382,7 +382,7 @@ footer {
     right: auto;
     height: 100%;
     width: 3px;
-    background: #3498db;
+    background: #3498db; /*#3498db*/
     z-index: 0
 }
 
@@ -391,7 +391,7 @@ footer {
     content: '';
     width: 3px;
     height: 40px;
-    background: #3498db;
+    background: #3498db; /*#3498db*/
     background: linear-gradient(to bottom, #3498db, rgba(52, 152, 219, 0));
     top: 100%;
     left: 303px
@@ -439,7 +439,7 @@ footer {
     color: #fff;
     width: 50px;
     height: 50px;
-    background: #3498db;
+    background: #3498db; /*#3498db*/
     border-radius: 50%;
     float: left;
     z-index: 99;
@@ -653,7 +653,7 @@ footer {
 
 #contact {
     padding: 50px 15px;
-    background: #3498db;
+    background: #3498db; /*#3498db*/
     text-align: center
 }
 
@@ -722,7 +722,7 @@ footer {
     border-radius: 4px;
     padding: 5px 10px;
     border: none;
-    color: #3498db;
+    color: #3498db; /*#3498db*/
     font-weight: 700;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: .5s ease all
