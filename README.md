@@ -24,7 +24,6 @@
     - [Contact Section](#contact-section)
     - [Footer Section](#footer-section)
     - [Optional Sections](#optional-sections)
-- [Changelog](#changelog)
 - [License](#license)
 
 ## Setup and Configuration
@@ -41,9 +40,9 @@ All scripts are within `js/scripts.js` and get minified to `js/scripts.min.js`. 
 
 At this point, the page is ready to go and you can begin to add your own information and make any needed changes. The sections below  contains a quick breakdown of each of the default sections and how they work.
 
-### Using The Template As Is
+### Using The Template As It Is
 
-If you wish to use the template as is (i.e. how it's seen in the demo), then all that's required is the `css`, `images`, `js`, `libs` folders and the `index.html` file. You would then add your content to `index.html` as needed and you're good to go!
+If you wish to use the template as it is, then all that's required is the `css`, `images`, `js`, `libs` folders and the `index.html` file. You would then add your content to `index.html` as needed and you're good to go!
 
 ## Customization and Editing
 
