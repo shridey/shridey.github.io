@@ -31,6 +31,23 @@
     <meta name="title" property="twitter:title" content="Shridhar Pandey | Portfolio">
     <meta name="description" property="twitter:description" content="I am a passionate tech explorer who loves to learn continously and be around new and emerging technologies.">
     <meta name="image" property="twitter:image" content="https://iamshridharr.github.io/images/FullStack_DarkBlue.png">
+
+    <script>
+        function checkPassword() {
+            var link = document.getElementById('confidential');
+            var enteredPassword = prompt("Enter the password:");
+    
+            // Replace "your_password_here" with your actual password
+            var correctPassword = "IAmShridhar@Confidential";
+    
+            if (enteredPassword === correctPassword) {
+                link.href = "./docs/resume.pdf";
+                window.location.href = "./docs/resume.pdf";
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -72,7 +89,8 @@
         <div id="lead-content">
             <h1>Shridhar Pandey</h1>
             <h2>Final Year Computer Science Student</h2>
-            <a href="./docs/Shridhar Pandey Resume.pdf" class="btn-rounded-white">Download Resume</a>
+            <a href="./docs/resume.pdf" class="btn-rounded-white">Download Resume</a>
+            <a id="confidential" href="" onclick="checkPassword()" class="btn-rounded-white">Download Confidential Info</a>
         </div>
         <!-- End #lead-content -->
 
