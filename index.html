@@ -31,23 +31,6 @@
     <meta name="title" property="twitter:title" content="Shridhar Pandey | Portfolio">
     <meta name="description" property="twitter:description" content="I am a passionate tech explorer who loves to learn continously and be around new and emerging technologies.">
     <meta name="image" property="twitter:image" content="https://iamshridharr.github.io/images/FullStack_DarkBlue.png">
-
-    <script>
-        function checkPassword() {
-            var link = document.getElementById('confidential');
-            var enteredPassword = prompt("Enter the password:");
-    
-            // Replace "your_password_here" with your actual password
-            var correctPassword = "IAmShridhar@Confidential";
-    
-            if (enteredPassword === correctPassword) {
-                link.href = "./docs/resume.pdf";
-                window.location.href = "./docs/resume.pdf";
-            } else {
-                alert("Incorrect password. Please try again.");
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -90,7 +73,7 @@
             <h1>Shridhar Pandey</h1>
             <h2>Final Year Computer Science Student</h2>
             <a href="./docs/resume.pdf" class="btn-rounded-white">Download Resume</a>
-            <a id="confidential" href="" onclick="checkPassword()" class="btn-rounded-white">Download Confidential Info</a>
+            <button class="btn-rounded-white" onclick="promptForPassword()">Download Confidential Info</button>
         </div>
         <!-- End #lead-content -->
 
@@ -340,6 +323,21 @@
     </footer>
     <!-- End footer -->
 
+    <script>
+        function promptForPassword() {
+            var password = prompt("Please enter the password:");
+    
+            // Check if the entered password is correct
+            if (password === "IAmShridhar") {
+                // Redirect to the confidential PDF
+                window.location.href = "./docs/confidential-protected.pdf";
+            } else if(password == "" || password == null) {
+                
+            } else {
+                alert("Incorrect password. Access denied!");
+            }
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
 </body>

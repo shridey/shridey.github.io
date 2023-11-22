@@ -201,6 +201,10 @@ footer {
     color: #3498db /*#3498db*/
 }
 
+button {
+    background-color: transparent;
+}
+
 .btn-rounded-white {
     display: inline-block;
     color: #fff;
