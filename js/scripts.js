@@ -91,7 +91,7 @@ function promptForPassword() {
     var password = prompt("Please enter the password:");
 
     // Check if the entered password is correct
-    if (password === "IAmShridhar") {
+    if (password === "1521") {
         // Redirect to the confidential PDF
         window.location.href = "https://drive.google.com/open?id=1-uWBWWX2H5aA2gnckobITF0o8iTyivB8&usp=drive_fs";
     } else if(password == "" || password == null) {
