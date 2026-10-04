@@ -33,6 +33,13 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  const renderIcons = () => {
+    if (window.lucide) {
+      window.lucide.createIcons({ attrs: { 'stroke-width': 1.9 } });
+    }
+  };
+  renderIcons();
+
   // One-set infinite marquee: move the first visual pair to the end as soon as it
   // leaves the viewport. Because the DOM order is updated before the transform is
   // reset, the first item literally follows the last with no midpoint restart.

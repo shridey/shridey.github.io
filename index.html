@@ -65,9 +65,10 @@
       </nav>
       <div class="nav-actions">
         <button class="icon-button theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
-          <span class="theme-sun">☼</span><span class="theme-moon">◐</span>
+          <i data-lucide="sun" class="icon theme-sun" aria-hidden="true"></i>
+          <i data-lucide="moon" class="icon theme-moon" aria-hidden="true"></i>
         </button>
-        <a class="nav-cta" href="mailto:shridharpandeyofficial@gmail.com">Say hi <span>↗</span></a>
+        <a class="nav-cta" href="mailto:shridharpandeyofficial@gmail.com">Say hi <i data-lucide="arrow-up-right" class="icon icon-sm" aria-hidden="true"></i></a>
       </div>
     </div>
   </header>
@@ -80,11 +81,11 @@
           <h1>I build things that are <span class="scribble">useful</span><span class="accent-dot">.</span></h1>
           <p class="hero-lede">Full-stack Java engineer who likes turning messy systems into clean, scalable products - and sneaking a little AI into the process.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#work">See what I built <span>↓</span></a>
-            <a class="button button-quiet" href="resume.pdf" target="_blank" rel="noopener">Resume <span>↗</span></a>
+            <a class="button button-primary" href="#work">See what I built <i data-lucide="arrow-down" class="icon icon-sm" aria-hidden="true"></i></a>
+            <a class="button button-quiet" href="resume.pdf" target="_blank" rel="noopener">Resume <i data-lucide="arrow-up-right" class="icon icon-sm" aria-hidden="true"></i></a>
           </div>
           <div class="hero-note">
-            <span class="tiny-arrow">↳</span>
+            <i data-lucide="corner-down-right" class="icon tiny-arrow" aria-hidden="true"></i>
             <span>Currently: building secure enterprise systems + exploring local AI.</span>
           </div>
         </div>
@@ -98,19 +99,19 @@
             </div>
             <figcaption>
               <span class="portrait-line"></span>
-              <span>hello, I'm Shridhar ✦</span>
+              <i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>hello, I'm Shridhar</span>
             </figcaption>
           </figure>
 
-          <div class="sticker sticker-top">build stuff ✦</div>
-          <div class="sticker sticker-note">chai → code → ship</div>
+          <div class="sticker sticker-top"><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>build stuff</span></div>
+          <div class="sticker sticker-note"><i data-lucide="coffee" class="icon icon-xs" aria-hidden="true"></i><span>chai</span><i data-lucide="arrow-right" class="icon icon-xs" aria-hidden="true"></i><span>code</span><i data-lucide="arrow-right" class="icon icon-xs" aria-hidden="true"></i><span>ship</span></div>
 
           <div class="mini-code-card" aria-hidden="true">
             <div class="window-bar"><span></span><span></span><span></span><b>shridey.java</b></div>
             <pre><code><span class="kw">return</span> <span class="str">"Java + React + AI"</span>;</code></pre>
           </div>
 
-          <div class="sticker sticker-bottom">less boilerplate<br />more building</div>
+          <div class="sticker sticker-bottom"><i data-lucide="code-2" class="icon icon-xs" aria-hidden="true"></i><span>less boilerplate<br />more building</span></div>
         </div>
       </div>
     </section>
@@ -118,7 +119,7 @@
     <section class="marquee-band" aria-label="Core focus areas">
       <div class="marquee-track" aria-hidden="true">
         <div class="marquee-set">
-          <span>JAVA</span><i>✳</i><span>SPRING BOOT</span><i>✳</i><span>REACT</span><i>✳</i><span>LOCAL AI</span><i>✳</i><span>DATA</span><i>✳</i><span>REST APIs</span><i>✳</i><span>DOCKER</span><i>✳</i><span>CLOUD</span><i>✳</i><span>RAG</span><i>✳</i><span>OPEN SOURCE</span><i>✳</i><span>UBUNTU</span><i>✳</i></i><span>REALTIME APPLICATIONS</span><i>✳</i>
+          <span>JAVA</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>SPRING BOOT</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>REACT</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>LOCAL AI</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>DATA</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>REST APIs</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>DOCKER</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>CLOUD</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>RAG</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>OPEN SOURCE</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>REALTIME APPLICATIONS</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i><span>AUTOMATION</span><i data-lucide="sparkles" class="icon icon-xs" aria-hidden="true"></i>
         </div>
       </div>
     </section>
@@ -136,29 +137,29 @@
         <div class="project-grid">
           <article class="project-card card-lilac reveal tilt-card">
             <div class="project-top"><span class="project-index">01</span><span class="project-year">Apr 2026</span></div>
-            <div class="project-icon">⇄</div>
+            <div class="project-icon" aria-hidden="true"><i data-lucide="workflow" class="icon project-glyph"></i></div>
             <h3>PureStream</h3>
             <p>Zero-dependency Java ETL engine built to process 10M+ records in under 40 seconds with a constant memory footprint.</p>
             <div class="tag-row"><span>Java</span><span>Maven</span><span>ETL</span></div>
-            <div class="project-foot"><span>Relational algebra · JSON flattening · CSV/JSON I/O</span><a href="https://central.sonatype.com/artifact/io.github.shridey/purestream" target="_blank" rel="noopener noreferrer"><span class="arrow-chip">↗</span></a></div>
+            <div class="project-foot"><span>Relational algebra · JSON flattening · CSV/JSON I/O</span><a href="https://central.sonatype.com/artifact/io.github.shridey/purestream" target="_blank" rel="noopener noreferrer"><span class="arrow-chip" aria-hidden="true"><i data-lucide="arrow-up-right" class="icon icon-xs"></i></span></a></div>
           </article>
 
           <article class="project-card card-peach reveal reveal-delay tilt-card">
             <div class="project-top"><span class="project-index">02</span><span class="project-year">Nov 2025 →</span></div>
-            <div class="project-icon">♡</div>
+            <div class="project-icon" aria-hidden="true"><i data-lucide="heart" class="icon project-glyph"></i></div>
             <h3>inDistant</h3>
             <p>A real-time relationship app built around strict 1-to-1 pairing and private digital connections.</p>
             <div class="tag-row"><span>Next.js</span><span>PostgreSQL</span><span>Ably</span></div>
-            <div class="project-foot"><span>Presence · typing indicators · instant messaging · notifications</span><a href="https://indistant.com" target="_blank" rel="noopener noreferrer"><span class="arrow-chip">↗</span></a></div>
+            <div class="project-foot"><span>Presence · typing indicators · instant messaging · notifications</span><a href="https://indistant.com" target="_blank" rel="noopener noreferrer"><span class="arrow-chip" aria-hidden="true"><i data-lucide="arrow-up-right" class="icon icon-xs"></i></span></a></div>
           </article>
 
           <article class="project-card card-mint reveal tilt-card">
             <div class="project-top"><span class="project-index">03</span><span class="project-year">May → Dec 2025</span></div>
-            <div class="project-icon">▦</div>
+            <div class="project-icon" aria-hidden="true"><i data-lucide="table-2" class="icon project-glyph"></i></div>
             <h3>Intelligentable</h3>
             <p>A customizable React component that extends Ant Design's Table with search, sort, filter, export, and element-level theming.</p>
             <div class="tag-row"><span>React</span><span>TypeScript</span><span>Ant Design</span></div>
-            <div class="project-foot"><span>3,000+ NPM downloads</span><a href="https://www.npmjs.com/package/@shridey/intelligentable" target="_blank" rel="noopener noreferrer"><span class="arrow-chip">↗</span></a></div>
+            <div class="project-foot"><span>3,000+ NPM downloads</span><a href="https://www.npmjs.com/package/@shridey/intelligentable" target="_blank" rel="noopener noreferrer"><span class="arrow-chip" aria-hidden="true"><i data-lucide="arrow-up-right" class="icon icon-xs"></i></span></a></div>
           </article>
         </div>
       </div>
@@ -245,25 +246,26 @@
           <h2>Have a good problem?<br /><span>Send it my way.</span></h2>
         </div>
         <div class="contact-actions">
+          <a class="button button-primary button-large" href="mailto:shridharpandeyofficial@gmail.com"><i data-lucide="mail" class="icon icon-sm" aria-hidden="true"></i>shridharpandeyofficial@gmail.com <i data-lucide="arrow-up-right" class="icon icon-sm" aria-hidden="true"></i></a>
           <div class="social-row">
-            <a href="https://github.com/shridey" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="https://linkedin.com/in/shridey" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a href="mailto:shridharpandeyofficial@gmail.com" target="_blank" rel="noopener">Email ↗</a>
+            <a href="https://github.com/shridey" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .67a11.33 11.33 0 0 0-3.58 22.08c.57.1.78-.25.78-.55v-2.1c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.74.4-1.25.72-1.54-2.54-.29-5.2-1.27-5.2-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.03 0 0 .96-.31 3.13 1.17a10.84 10.84 0 0 1 5.7 0c2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.74.11 3.03.73.8 1.18 1.82 1.18 3.07 0 4.4-2.67 5.36-5.22 5.64.41.36.77 1.07.77 2.16v3.2c0 .3.21.65.79.54A11.33 11.33 0 0 0 12 .67Z"/></svg><span>GitHub</span><i data-lucide="arrow-up-right" class="icon icon-xs" aria-hidden="true"></i></a>
+            <a href="https://linkedin.com/in/shridey" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.75 8.18H3.36V20h3.39V8.18ZM5.06 3A1.98 1.98 0 1 0 5.07 7a1.98 1.98 0 0 0 0-3.96ZM20.64 12.48c0-3.56-1.9-5.23-4.44-5.23-2.05 0-2.97 1.13-3.48 1.92V8.18H9.34V20h3.38v-5.86c0-1.55.29-3.06 2.22-3.06 1.9 0 1.92 1.78 1.92 3.16V20h3.38v-7.52Z"/></svg><span>LinkedIn</span><i data-lucide="arrow-up-right" class="icon icon-xs" aria-hidden="true"></i></a>
           </div>
         </div>
-        <div class="contact-doodle">✳</div>
+        <div class="contact-doodle" aria-hidden="true"><i data-lucide="sparkles" class="icon contact-sparkle"></i></div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> Shridhar Pandey</span>
-      <span>Made with ☕ + curiosity</span>
-      <a href="#top">Back to top ↑</a>
+      <span>&copy; <span id="year"></span> Shridhar Pandey</span>
+      <span class="footer-made"><i data-lucide="coffee" class="icon icon-xs" aria-hidden="true"></i> Made with curiosity</span>
+      <a href="#top">Back to top <i data-lucide="arrow-up" class="icon icon-xs" aria-hidden="true"></i></a>
     </div>
   </footer>
 
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
