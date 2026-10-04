@@ -7,12 +7,13 @@
   const savedTheme = localStorage.getItem('shridey-theme');
 
   const applyTheme = (theme) => {
-    if (theme === 'system') {
-      root.removeAttribute('data-theme');
-    } else {
-      root.dataset.theme = theme;
-    }
-    const dark = theme === 'dark' || (theme === 'system' && prefersDark.matches);
+    const resolvedTheme = theme === 'system'
+      ? (prefersDark.matches ? 'dark' : 'light')
+      : theme;
+
+    root.dataset.theme = resolvedTheme;
+
+    const dark = resolvedTheme === 'dark';
     themeMeta?.setAttribute('content', dark ? '#12110f' : '#fbfaf7');
     themeFavicon?.setAttribute('href', dark ? 'assets/logo-dark-icon.png' : 'assets/logo-light-icon.png');
     themeToggle?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);

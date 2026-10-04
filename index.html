@@ -35,9 +35,11 @@
   <script>
     (() => {
       const saved = localStorage.getItem('shridey-theme');
-      if (saved === 'dark' || (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.dataset.theme = 'dark';
-      }
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved === 'dark' || saved === 'light' ? saved : (prefersDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+      const favicon = document.getElementById('theme-favicon');
+      if (favicon) favicon.setAttribute('href', theme === 'dark' ? 'assets/logo-dark-icon.png' : 'assets/logo-light-icon.png');
     })();
   </script>
   <link id="theme-favicon" rel="icon" type="image/png" href="assets/logo-light-icon.png" />
@@ -145,7 +147,7 @@
           </article>
 
           <article class="project-card card-peach reveal reveal-delay tilt-card">
-            <div class="project-top"><span class="project-index">02</span><span class="project-year">Nov 2025 →</span></div>
+            <div class="project-top"><span class="project-index">02</span><span class="project-year">Nov 2025 → Present</span></div>
             <div class="project-icon" aria-hidden="true"><i data-lucide="heart" class="icon project-glyph"></i></div>
             <h3>inDistant</h3>
             <p>A real-time relationship app built around strict 1-to-1 pairing and private digital connections.</p>
@@ -154,7 +156,7 @@
           </article>
 
           <article class="project-card card-mint reveal tilt-card">
-            <div class="project-top"><span class="project-index">03</span><span class="project-year">May → Dec 2025</span></div>
+            <div class="project-top"><span class="project-index">03</span><span class="project-year">May 2025 → Dec 2025</span></div>
             <div class="project-icon" aria-hidden="true"><i data-lucide="table-2" class="icon project-glyph"></i></div>
             <h3>Intelligentable</h3>
             <p>A customizable React component that extends Ant Design's Table with search, sort, filter, export, and element-level theming.</p>
@@ -246,10 +248,10 @@
           <h2>Have a good problem?<br /><span>Send it my way.</span></h2>
         </div>
         <div class="contact-actions">
-          <a class="button button-primary button-large" href="mailto:shridharpandeyofficial@gmail.com"><i data-lucide="mail" class="icon icon-sm" aria-hidden="true"></i>shridharpandeyofficial@gmail.com <i data-lucide="arrow-up-right" class="icon icon-sm" aria-hidden="true"></i></a>
           <div class="social-row">
             <a href="https://github.com/shridey" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .67a11.33 11.33 0 0 0-3.58 22.08c.57.1.78-.25.78-.55v-2.1c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.74.4-1.25.72-1.54-2.54-.29-5.2-1.27-5.2-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.03 0 0 .96-.31 3.13 1.17a10.84 10.84 0 0 1 5.7 0c2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.74.11 3.03.73.8 1.18 1.82 1.18 3.07 0 4.4-2.67 5.36-5.22 5.64.41.36.77 1.07.77 2.16v3.2c0 .3.21.65.79.54A11.33 11.33 0 0 0 12 .67Z"/></svg><span>GitHub</span><i data-lucide="arrow-up-right" class="icon icon-xs" aria-hidden="true"></i></a>
             <a href="https://linkedin.com/in/shridey" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.75 8.18H3.36V20h3.39V8.18ZM5.06 3A1.98 1.98 0 1 0 5.07 7a1.98 1.98 0 0 0 0-3.96ZM20.64 12.48c0-3.56-1.9-5.23-4.44-5.23-2.05 0-2.97 1.13-3.48 1.92V8.18H9.34V20h3.38v-5.86c0-1.55.29-3.06 2.22-3.06 1.9 0 1.92 1.78 1.92 3.16V20h3.38v-7.52Z"/></svg><span>LinkedIn</span><i data-lucide="arrow-up-right" class="icon icon-xs" aria-hidden="true"></i></a>
+            <a href="mailto:shridharpandeyofficial@gmail.com" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"> <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm3.519 0L12 11.671 18.481 6H5.52zM20 7.329l-7.341 6.424a1 1 0 0 1-1.318 0L4 7.329V18h16V7.329z"/></svg><span>Email</span><i data-lucide="arrow-up-right" class="icon icon-xs" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="contact-doodle" aria-hidden="true"><i data-lucide="sparkles" class="icon contact-sparkle"></i></div>
@@ -260,7 +262,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <span>&copy; <span id="year"></span> Shridhar Pandey</span>
-      <span class="footer-made"><i data-lucide="coffee" class="icon icon-xs" aria-hidden="true"></i> Made with curiosity</span>
+      <span class="footer-made">Made with <i data-lucide="coffee" class="icon icon-xs" aria-hidden="true"></i> and curiosity</span>
       <a href="#top">Back to top <i data-lucide="arrow-up" class="icon icon-xs" aria-hidden="true"></i></a>
     </div>
   </footer>
