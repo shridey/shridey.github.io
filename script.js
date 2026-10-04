@@ -1,226 +1,129 @@
 (() => {
-  const THEME_KEY = "theme";
   const root = document.documentElement;
+  const themeToggle = document.querySelector('.theme-toggle');
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const themeFavicon = document.querySelector('#theme-favicon');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const savedTheme = localStorage.getItem('shridey-theme');
 
-  const getSystemTheme = () => {
-    try {
-      return window.matchMedia?.("(prefers-color-scheme: light)").matches ? "light" : "dark";
-    } catch {
-      return "dark";
+  const applyTheme = (theme) => {
+    if (theme === 'system') {
+      root.removeAttribute('data-theme');
+    } else {
+      root.dataset.theme = theme;
     }
+    const dark = theme === 'dark' || (theme === 'system' && prefersDark.matches);
+    themeMeta?.setAttribute('content', dark ? '#12110f' : '#fbfaf7');
+    themeFavicon?.setAttribute('href', dark ? 'assets/logo-dark-icon.png' : 'assets/logo-light-icon.png');
+    themeToggle?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
   };
 
-  const getStoredTheme = () => {
-    try {
-      const value = localStorage.getItem(THEME_KEY);
-      return value === "light" || value === "dark" ? value : null;
-    } catch {
-      return null;
-    }
-  };
+  applyTheme(savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'system');
 
-  const setTheme = (theme, { persist } = { persist: false }) => {
-    root.dataset.theme = theme;
-    const toggle = document.getElementById("themeToggle");
-    if (toggle) toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+  themeToggle?.addEventListener('click', () => {
+    const currentDark = root.dataset.theme === 'dark' || (!root.dataset.theme && prefersDark.matches);
+    const next = currentDark ? 'light' : 'dark';
+    localStorage.setItem('shridey-theme', next);
+    applyTheme(next);
+  });
 
-    if (persist) {
-      try {
-        localStorage.setItem(THEME_KEY, theme);
-      } catch {
-        // ignore storage failures (private mode / disabled storage)
+  prefersDark.addEventListener('change', () => {
+    if (!localStorage.getItem('shridey-theme')) applyTheme('system');
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // One-set infinite marquee: move the first visual pair to the end as soon as it
+  // leaves the viewport. Because the DOM order is updated before the transform is
+  // reset, the first item literally follows the last with no midpoint restart.
+  const marqueeBand = document.querySelector('.marquee-band');
+  const marqueeSet = document.querySelector('.marquee-set');
+  if (marqueeBand && marqueeSet && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let offset = 0;
+    let lastTime = performance.now();
+    let rafId = 0;
+    let paused = false;
+
+    const getGap = () => {
+      const styles = getComputedStyle(marqueeSet);
+      return parseFloat(styles.columnGap || styles.gap || '0') || 0;
+    };
+
+    const frame = (time) => {
+      const delta = Math.min(64, time - lastTime);
+      lastTime = time;
+
+      if (!paused) {
+        // Pixels per second. Keep the motion subtle and readable.
+        offset += delta * 0.055;
+
+        const first = marqueeSet.firstElementChild;
+        const second = first?.nextElementSibling;
+        if (first && second) {
+          const step = first.getBoundingClientRect().width
+            + second.getBoundingClientRect().width
+            + getGap() * 2;
+
+          if (offset >= step) {
+            marqueeSet.append(first, second);
+            offset -= step;
+          }
+        }
+
+        marqueeSet.style.transform = `translate3d(${-offset}px, 0, 0)`;
       }
-    }
-  };
 
-  const initTheme = () => {
-    const stored = getStoredTheme();
-    setTheme(stored ?? getSystemTheme(), { persist: false });
+      rafId = requestAnimationFrame(frame);
+    };
 
-    // Keep in sync with OS theme only if user hasn't chosen explicitly.
-    try {
-      const mq = window.matchMedia?.("(prefers-color-scheme: light)");
-      if (!mq) return;
-      mq.addEventListener("change", () => {
-        if (getStoredTheme() !== null) return;
-        setTheme(getSystemTheme(), { persist: false });
-      });
-    } catch {
-      // ignore
-    }
-  };
+    marqueeBand.addEventListener('mouseenter', () => { paused = true; }, { passive: true });
+    marqueeBand.addEventListener('mouseleave', () => { paused = false; lastTime = performance.now(); }, { passive: true });
+    marqueeBand.addEventListener('touchstart', () => { paused = true; }, { passive: true });
+    marqueeBand.addEventListener('touchend', () => { paused = false; lastTime = performance.now(); }, { passive: true });
+    window.addEventListener('resize', () => {
+      lastTime = performance.now();
+    }, { passive: true });
 
-  const initYear = () => {
-    const year = document.getElementById("year");
-    if (year) year.textContent = String(new Date().getFullYear());
-  };
+    rafId = requestAnimationFrame(frame);
+    window.addEventListener('pagehide', () => cancelAnimationFrame(rafId), { once: true });
+  }
 
-  const initThemeToggle = () => {
-    const toggle = document.getElementById("themeToggle");
-    if (!toggle) return;
-    toggle.addEventListener("click", () => {
-      const current = root.dataset.theme === "light" ? "light" : "dark";
-      const next = current === "dark" ? "light" : "dark";
-      setTheme(next, { persist: true });
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      obs.unobserve(entry.target);
     });
-  };
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-  const initHeaderElevation = () => {
-    const header = document.querySelector(".site-header");
-    if (!header) return;
-    const update = () => {
-      header.setAttribute("data-elevated", window.scrollY > 6 ? "true" : "false");
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-  };
-
-  const initActiveNav = () => {
-    const navLinks = Array.from(document.querySelectorAll(".site-header .nav a[href^=\"#\"]"));
-    if (navLinks.length === 0) return;
-
-    const items = navLinks
-      .map((link) => {
-        const id = link.getAttribute("href")?.slice(1);
-        if (!id) return null;
-        const section = document.getElementById(id);
-        if (!section) return null;
-        return { id, link, section };
-      })
-      .filter(Boolean);
-
-    if (items.length === 0) return;
-
-    const setActive = (id) => {
-      for (const item of items) item.link.removeAttribute("aria-current");
-      const hit = items.find((x) => x.id === id);
-      if (hit) hit.link.setAttribute("aria-current", "true");
-    };
-
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-
-      const offset = 120; // matches sticky header + comfortable buffer
-      let active = items[0].id;
-      for (const item of items) {
-        const top = item.section.getBoundingClientRect().top;
-        if (top - offset <= 0) active = item.id;
-      }
-      setActive(active);
-    };
-
-    update();
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(update);
-      },
-      { passive: true }
+  // Small pointer glow: playful, but intentionally subtle.
+  const glow = document.querySelector('.cursor-glow');
+  window.addEventListener('pointermove', (event) => {
+    if (!glow) return;
+    glow.animate(
+      { left: `${event.clientX}px`, top: `${event.clientY}px` },
+      { duration: 450, fill: 'forwards', easing: 'cubic-bezier(.2,.8,.2,1)' }
     );
-  };
+  }, { passive: true });
 
-  const copyText = async (text) => {
-    if (!text) return false;
-
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      // Fallback for older browsers / blocked clipboard.
-      try {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.setAttribute("readonly", "true");
-        ta.style.position = "fixed";
-        ta.style.left = "-9999px";
-        ta.style.top = "0";
-        document.body.appendChild(ta);
-        ta.select();
-        const ok = document.execCommand("copy");
-        document.body.removeChild(ta);
-        return ok;
-      } catch {
-        return false;
-      }
-    }
-  };
-
-  const initCopyEmail = () => {
-    const btn = document.getElementById("copyEmail");
-    const status = document.getElementById("copyEmailStatus");
-    if (!btn || !status) return;
-
-    let t = null;
-    const setStatus = (message) => {
-      status.textContent = message;
-      if (t) window.clearTimeout(t);
-      t = window.setTimeout(() => {
-        status.textContent = "";
-        t = null;
-      }, 1800);
-    };
-
-    btn.addEventListener("click", async () => {
-      const email = btn.getAttribute("data-email");
-      const ok = await copyText(email);
-      setStatus(ok ? "Copied to clipboard." : "Copy failed. Please copy manually.");
+  // Gentle card tilt on fine pointers.
+  document.querySelectorAll('.tilt-card').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      if (!window.matchMedia('(pointer:fine)').matches) return;
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      card.style.transform = `perspective(900px) rotateX(${(-y * 3).toFixed(2)}deg) rotateY(${(x * 3).toFixed(2)}deg) translateY(-3px)`;
     });
-  };
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
 
-  const initAOS = () => {
-    const reduced =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ??
-      false;
-    if (reduced) return;
-    if (!window.AOS?.init) return;
-    window.AOS.init({
-      once: true,
-      offset: 80,
-      duration: 550,
-      easing: "ease-out-cubic",
-    });
-  };
-
-  const initMobileMenu = () => {
-    const toggle = document.getElementById("menuToggle");
-    const dialog = document.getElementById("mobileMenu");
-    if (!toggle || !dialog) return;
-
-    const closeTargets = dialog.querySelectorAll("[data-close=\"true\"], [data-nav-close=\"true\"]");
-
-    const setOpen = (open) => {
-      dialog.hidden = !open;
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      document.body.style.overflow = open ? "hidden" : "";
-      if (open) {
-        // Focus the first link for quicker keyboard navigation
-        const first = dialog.querySelector("a,button");
-        first?.focus?.();
-      } else {
-        toggle.focus?.();
-      }
-    };
-
-    toggle.addEventListener("click", () => setOpen(dialog.hidden));
-    closeTargets.forEach((el) => el.addEventListener("click", () => setOpen(false)));
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key !== "Escape") return;
-      if (dialog.hidden) return;
-      setOpen(false);
-    });
-  };
-
-  initTheme();
-  initYear();
-  initThemeToggle();
-  initHeaderElevation();
-  initActiveNav();
-  initCopyEmail();
-  initMobileMenu();
-  initAOS();
+  // Tiny keyboard easter egg: T toggles theme (outside form fields).
+  window.addEventListener('keydown', (event) => {
+    if (event.key.toLowerCase() !== 't') return;
+    const tag = document.activeElement?.tagName?.toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    themeToggle?.click();
+  });
 })();
