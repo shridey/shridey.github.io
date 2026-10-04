@@ -70,7 +70,7 @@ button { font: inherit; }
 .nav-cta, .button, .sticker, .social-row a, .footer-inner a { display:inline-flex; align-items:center; }
 .nav-cta, .button { gap: 9px; }
 .sticker { gap: 6px; }
-.sticker-note { gap: 5px; }
+.sticker-note { gap: 3px; }
 .sticker-bottom { gap: 7px; }
 .portrait-card figcaption { gap: 7px; }
 .hero-note { gap: 8px; }
