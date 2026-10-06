@@ -367,6 +367,8 @@ li { margin: 9px 0; }
 }
 
 @media (min-width: 1040px) {
+  .writing-grid { grid-template-columns:repeat(3, 1fr); }
+  .writing-card:last-child { grid-column:auto; }
   :root { --header-height: 78px; }
   .nav-shell { min-height:var(--header-height); }
   .hero-grid { grid-template-columns: 1.04fr .96fr; gap:46px; }
@@ -408,9 +410,9 @@ li { margin: 9px 0; }
 
 /* --- Kind words --- */
 .section-kind-words { background: var(--bg); overflow:hidden; }
-.testimonial-stage { position:relative; min-height:390px; display:grid; place-items:center; padding:26px 0 54px; }
-.testimonial-note { position:relative; border:1px solid var(--line); box-shadow:var(--shadow); }
-.testimonial-note-main { width:min(100%, 820px); display:grid; grid-template-columns:auto 1fr; gap:18px; padding:28px; border-radius:26px 30px 24px 32px; background:var(--yellow); color:#2f280f; transform:rotate(-1.2deg); z-index:1; }
+.testimonial-stage { display:grid; place-items:center; padding:26px 0 12px; }
+.testimonial-note { position:relative; width:min(100%, 820px); border:1px solid var(--line); box-shadow:var(--shadow); }
+.testimonial-note-main { display:grid; grid-template-columns:auto 1fr; gap:18px; padding:28px; border-radius:26px 30px 24px 32px; background:var(--yellow); color:#2f280f; transform:rotate(-1.2deg); }
 .testimonial-copy { min-width:0; }
 .testimonial-pin { position:absolute; top:-8px; left:48%; width:15px; height:15px; border-radius:50%; background:var(--accent); box-shadow:0 3px 0 rgba(0,0,0,.14); }
 .testimonial-icon { width:52px; height:52px; display:grid; place-items:center; border-radius:16px; background:rgba(255,255,255,.54); flex:none; }
@@ -424,13 +426,30 @@ li { margin: 9px 0; }
 .testimonial-signoff small { opacity:.62; font-size:.72rem; line-height:1.45; max-width:60ch; }
 .testimonial-link { display:inline-flex; align-items:center; gap:7px; margin-top:16px; padding:9px 12px; border:1px solid rgba(0,0,0,.14); border-radius:999px; background:rgba(255,255,255,.4); font:700 .65rem "Space Mono", monospace; }
 .testimonial-link:hover { transform:translateY(-1px); background:rgba(255,255,255,.62); }
-.testimonial-note-small { position:absolute; z-index:2; width:min(210px, 32vw); padding:16px; display:grid; gap:8px; border-radius:18px; background:var(--surface); color:var(--text); }
-.testimonial-note-small::after { content:""; position:absolute; inset:0; border:1px dashed color-mix(in srgb, var(--accent) 45%, transparent); border-radius:inherit; pointer-events:none; }
-.note-tilt-left { left:0; bottom:0; transform:rotate(-6deg); background:var(--lilac); color:#292043; }
-.note-tilt-right { right:0; top:8px; transform:rotate(5deg); background:var(--mint); color:#173b31; }
-.note-quote { width:18px; height:18px; }
-.note-small-label { font:800 .78rem/1.25 "Manrope", sans-serif; letter-spacing:-.02em; }
-.testimonial-note-small small { font-size:.7rem; opacity:.66; line-height:1.4; }
+
+/* --- Writing / posts --- */
+.section-writing { overflow:hidden; }
+.writing-grid { display:grid; gap:14px; }
+.writing-card { position:relative; min-width:0; min-height:380px; display:flex; flex-direction:column; padding:22px; border:1px solid var(--line); border-radius:24px; box-shadow:0 12px 35px rgba(0,0,0,.04); overflow:hidden; transition:transform .2s ease, box-shadow .2s ease; }
+.writing-card:hover { box-shadow:var(--shadow); }
+.writing-lilac { background:var(--lilac); color:#241f37; }
+.writing-peach { background:var(--peach); color:#3d2519; }
+.writing-mint { background:var(--mint); color:#163a2e; }
+.writing-top { display:flex; align-items:center; justify-content:space-between; gap:12px; font:700 .68rem "Space Mono", monospace; opacity:.72; }
+.writing-platform { display:inline-flex; align-items:center; gap:7px; min-width:0; }
+.writing-icon, .writing-profile-mark { width:58px; height:58px; margin-top:28px; display:grid; place-items:center; border-radius:18px; background:rgba(255,255,255,.5); }
+.writing-icon .icon, .writing-profile-mark .icon { width:27px; height:27px; }
+.writing-copy { margin-top:22px; }
+.writing-type { font:700 .66rem "Space Mono", monospace; text-transform:uppercase; letter-spacing:.08em; opacity:.68; }
+.writing-copy h3 { margin:.55rem 0 .6rem; font-size:1.42rem; }
+.writing-copy p { margin:0; color:inherit; opacity:.72; max-width:43ch; }
+.writing-meta { display:flex; flex-wrap:wrap; gap:7px; margin-top:auto; padding-top:24px; }
+.writing-meta span { border:1px solid rgba(0,0,0,.14); padding:6px 9px; border-radius:999px; font:700 .63rem "Space Mono", monospace; }
+.writing-link { display:inline-flex; align-items:center; justify-content:flex-end; gap:7px; margin-top:14px; padding-top:14px; border-top:1px solid rgba(0,0,0,.14); font:700 .73rem "Space Mono", monospace; opacity:.82; }
+.writing-link:hover { opacity:1; transform:translateY(-1px); }
+.writing-profile-card { cursor:pointer; }
+.writing-profile-card .writing-top > .icon { color:inherit; }
+.writing-link-inline { border-top:0; margin-top:auto; padding-top:24px; }
 
 /* --- Education + certifications --- */
 .education-grid, .cert-grid { display:grid; gap:14px; }
@@ -459,30 +478,20 @@ li { margin: 9px 0; }
 .cert-card p { margin:0; color:inherit; opacity:.72; max-width:42ch; }
 
 @media (min-width:720px) {
-  .testimonial-stage { min-height:390px; }
+  .writing-grid { grid-template-columns:repeat(2, 1fr); }
+  .writing-card:last-child { grid-column:1/-1; }
   .education-grid { grid-template-columns:1.25fr .875fr .875fr; align-items:stretch; }
   .education-main { min-height:365px; }
   .education-card:not(.education-main) { min-height:365px; }
   .cert-grid { grid-template-columns:repeat(3, 1fr); }
 }
 
-@media (max-width:1079px) {
-  .testimonial-stage { min-height:0; grid-template-columns:1fr 1fr; gap:14px; padding-bottom:34px; }
-  .testimonial-note-main { grid-column:1 / -1; width:100%; }
-  .testimonial-note-small { position:relative; inset:auto; width:100%; transform:none; }
-  .note-tilt-left { background:var(--lilac); }
-  .note-tilt-right { background:var(--mint); }
-}
-
 @media (max-width:719px) {
-  .testimonial-stage { grid-template-columns:1fr; padding:24px 0 36px; }
-  .testimonial-note-main { grid-column:auto; grid-template-columns:1fr; width:min(100%, 560px); padding:22px; }
+  .testimonial-note-main { grid-template-columns:1fr; padding:22px; }
   .testimonial-icon { width:46px; height:46px; }
-  .testimonial-note-small { width:100%; padding:15px; }
 }
 
 @media (max-width:479px) {
-  .testimonial-note-small { padding:13px; }
   .education-card, .cert-card { padding:19px; }
   .credential-copy h3, .cert-card h3 { font-size:1.28rem; }
 }
