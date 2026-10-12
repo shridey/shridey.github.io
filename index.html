@@ -34,17 +34,31 @@
   <meta name="twitter:description" content="Full-stack Java engineer building scalable web apps, modernizing legacy systems, and exploring practical local AI." />
   <meta name="twitter:image" content="https://shridey.com/assets/social-preview.png" />
   <meta name="twitter:image:alt" content="Shridhar Pandey - Software Engineer portfolio" />
+  <link id="theme-favicon" rel="icon" type="image/png" href="assets/logo-light-icon.png" />
   <script>
     (() => {
+      const root = document.documentElement;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
       const saved = localStorage.getItem('shridey-theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = saved === 'dark' || saved === 'light' ? saved : (prefersDark ? 'dark' : 'light');
-      document.documentElement.dataset.theme = theme;
+      const theme = saved === 'dark' || saved === 'light'
+        ? saved
+        : (prefersDark.matches ? 'dark' : 'light');
+      root.dataset.theme = theme;
+
+      // The browser-tab favicon follows the operating-system theme only.
+      // The in-app theme toggle must not change it.
       const favicon = document.getElementById('theme-favicon');
-      if (favicon) favicon.setAttribute('href', theme === 'dark' ? 'assets/logo-dark-icon.png' : 'assets/logo-light-icon.png');
+      const updateSystemFavicon = () => {
+        if (favicon) {
+          favicon.setAttribute('href', prefersDark.matches
+            ? 'assets/logo-dark-icon.png'
+            : 'assets/logo-light-icon.png');
+        }
+      };
+      updateSystemFavicon();
+      prefersDark.addEventListener('change', updateSystemFavicon);
     })();
   </script>
-  <link id="theme-favicon" rel="icon" type="image/png" href="assets/logo-light-icon.png" />
   <title>Shridhar Pandey - Software Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

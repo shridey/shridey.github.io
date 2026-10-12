@@ -2,7 +2,6 @@
   const root = document.documentElement;
   const themeToggle = document.querySelector('.theme-toggle');
   const themeMeta = document.querySelector('meta[name="theme-color"]');
-  const themeFavicon = document.querySelector('#theme-favicon');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
   const savedTheme = localStorage.getItem('shridey-theme');
 
@@ -15,7 +14,6 @@
 
     const dark = resolvedTheme === 'dark';
     themeMeta?.setAttribute('content', dark ? '#12110f' : '#fbfaf7');
-    themeFavicon?.setAttribute('href', dark ? 'assets/logo-dark-icon.png' : 'assets/logo-light-icon.png');
     themeToggle?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
   };
 
