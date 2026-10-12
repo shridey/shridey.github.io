@@ -166,8 +166,9 @@
     icon.append(iconElement);
 
     const copy = makeElement('div', 'testimonial-copy');
-    const source = String(testimonial.source || 'shridey').trim();
-    const sourceLabel = source.toLowerCase() === 'linkedin' ? 'LinkedIn · Recommendation' : 'Shared via Shridey';
+    const source = String(testimonial.source).trim();
+    const via = String(testimonial.via).trim();
+    const sourceLabel = source + " · " + via;
     copy.append(makeElement('span', 'testimonial-label', sourceLabel));
 
     const blockquote = document.createElement('blockquote');
