@@ -259,7 +259,7 @@
       </div>
     </section>
 
-        <section id="kind-words" class="section-pad section-kind-words">
+    <section id="kind-words" class="section-pad section-kind-words">
       <div class="container">
         <div class="section-heading reveal">
           <div>
@@ -269,26 +269,77 @@
           <p>A small corner for teammates, collaborators, and people I've had the pleasure of building with.</p>
         </div>
 
-        <div class="testimonial-stage reveal reveal-delay">
-          <article class="testimonial-note testimonial-note-main">
-            <div class="testimonial-pin" aria-hidden="true"></div>
-            <div class="testimonial-icon" aria-hidden="true"><i data-lucide="message-circle-heart" class="icon"></i></div>
-            <div class="testimonial-copy">
-              <span class="testimonial-label">LinkedIn · Recommendation</span>
-              <blockquote>
-                <p>“Shridhar produced high-quality code and consistently went further. While developing our analytics platform for K-12 school leaders, he proposed experimental features and built working prototypes rapidly, accelerating our product roadmap. His initiative added real value to the project and his collaborative approach made him easy to work with. He balances proactive thinking with strong execution. I'd recommend him for development teams building data products where initiative and technical skill both matter.”</p>
-              </blockquote>
-              <div class="testimonial-signoff">
-                <span class="avatar-dot" aria-hidden="true">P</span>
-                <div>
-                  <strong>Patrick Colgan</strong>
-                  <small>Product Manager @ Capital One · Data, Decisions &amp; AI Group · worked with Shridhar on the same team · Feb 7, 2026</small>
-                </div>
-              </div>
-              <a class="testimonial-link" href="https://www.linkedin.com/in/patrickgcolgan/" target="_blank" rel="noopener noreferrer">Visit Patrick's Profile <i data-lucide="arrow-up-right" class="icon icon-xs" aria-hidden="true"></i></a>
-            </div>
-          </article>
+        <div class="testimonial-stage reveal reveal-delay" id="testimonial-stage" aria-live="polite" aria-busy="true">
+          <div class="testimonial-skeleton" aria-hidden="true">
+            <div class="skeleton-top"><span></span><span></span></div>
+            <div class="skeleton-line skeleton-line-long"></div>
+            <div class="skeleton-line skeleton-line-long"></div>
+            <div class="skeleton-line skeleton-line-medium"></div>
+            <div class="skeleton-line skeleton-line-short"></div>
+            <div class="skeleton-person"><span></span><div><i></i><i></i></div></div>
+          </div>
+          <div class="testimonial-skeleton" aria-hidden="true">
+            <div class="skeleton-top"><span></span><span></span></div>
+            <div class="skeleton-line skeleton-line-long"></div>
+            <div class="skeleton-line skeleton-line-medium"></div>
+            <div class="skeleton-line skeleton-line-long"></div>
+            <div class="skeleton-line skeleton-line-short"></div>
+            <div class="skeleton-person"><span></span><div><i></i><i></i></div></div>
+          </div>
         </div>
+
+        <div class="testimonial-actions reveal reveal-delay">
+          <p>Your words can be part of the story, too.</p>
+          <button class="button button-primary" type="button" id="open-testimonial-form">
+            <i data-lucide="message-square-heart" class="icon icon-sm" aria-hidden="true"></i>
+            Add your words
+          </button>
+        </div>
+
+        <dialog class="testimonial-dialog" id="testimonial-dialog" aria-labelledby="testimonial-form-title">
+          <form class="testimonial-form" id="testimonial-form">
+            <div class="testimonial-form-heading">
+              <div>
+                <span class="section-kicker">A little note</span>
+                <h3 id="testimonial-form-title">Add your words.</h3>
+                <p>Share a few kind words about working, learning, or building together.</p>
+              </div>
+              <button class="icon-button testimonial-form-close" type="button" id="close-testimonial-form" aria-label="Close form">
+                <i data-lucide="x" class="icon" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <label for="testimonial-name">Your name</label>
+            <input id="testimonial-name" name="name" autocomplete="name" maxlength="100" required />
+
+            <label for="testimonial-role">Role</label>
+            <input id="testimonial-role" name="role" autocomplete="organization-title" maxlength="120" placeholder="e.g. Product Manager at Acme" required />
+
+            <label for="testimonial-tagline">Tagline / organization</label>
+            <input id="testimonial-tagline" name="tagline" maxlength="160" placeholder="e.g. Acme · Data Platform" required />
+
+            <label for="testimonial-profile-url">Profile URL <span>(optional)</span></label>
+            <input id="testimonial-profile-url" name="profile-url" type="url" inputmode="url" autocomplete="url" maxlength="500" placeholder="https://linkedin.com/in/you" />
+
+            <label for="testimonial-content">Your words</label>
+            <textarea id="testimonial-content" name="content" rows="5" minlength="12" maxlength="1800" required placeholder="What was it like working together?"></textarea>
+            <small class="testimonial-form-hint">Please keep it genuine and respectful. 12–1,800 characters.</small>
+
+            <div class="testimonial-honeypot" aria-hidden="true">
+              <label for="testimonial-website">Leave this field empty</label>
+              <input id="testimonial-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <p class="testimonial-form-status" id="testimonial-form-status" role="status" aria-live="polite"></p>
+            <div class="testimonial-form-actions">
+              <button class="button button-quiet" type="button" id="cancel-testimonial-form">Cancel</button>
+              <button class="button button-primary" type="submit" id="submit-testimonial-form">
+                Send kind words <i data-lucide="send" class="icon icon-sm" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+        </dialog>
+        <iframe class="testimonial-submit-frame" name="testimonial-submit-frame" title="Testimonial submission response" hidden></iframe>
       </div>
     </section>
 
