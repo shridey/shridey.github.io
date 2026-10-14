@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Shridhar Pandey - Software Engineer building scalable Java, Spring Boot, React and practical AI systems." />
+  <meta name="author" content="Shridhar Pandey" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#12110f" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark">
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Search engines / canonical URL -->
+  <link rel="canonical" href="https://shridey.com/" />
+
+  <!-- Open Graph: link previews on LinkedIn, WhatsApp, Facebook, etc. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shridey.com/" />
+  <meta property="og:title" content="Shridhar Pandey - Software Engineer" />
+  <meta property="og:description" content="Full-stack Java engineer building scalable web apps, modernizing legacy systems, and exploring practical local AI." />
+  <meta property="og:image" content="https://shridey.com/assets/social-preview.png" />
+  <meta property="og:image:secure_url" content="https://shridey.com/assets/social-preview.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Shridhar Pandey - Software Engineer portfolio" />
+  <meta property="og:site_name" content="Shridhar Pandey" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- X / Twitter large preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shridhar Pandey - Software Engineer" />
+  <meta name="twitter:description" content="Full-stack Java engineer building scalable web apps, modernizing legacy systems, and exploring practical local AI." />
+  <meta name="twitter:image" content="https://shridey.com/assets/social-preview.png" />
+  <meta name="twitter:image:alt" content="Shridhar Pandey - Software Engineer portfolio" />
+  <link id="theme-favicon" rel="icon" type="image/png" href="assets/logo-light-icon.png" />
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      const saved = localStorage.getItem('shridey-theme');
+      const theme = saved === 'dark' || saved === 'light'
+        ? saved
+        : (prefersDark.matches ? 'dark' : 'light');
+      root.dataset.theme = theme;
+
+      // The browser-tab favicon follows the operating-system theme only.
+      // The in-app theme toggle must not change it.
+      const favicon = document.getElementById('theme-favicon');
+      const updateSystemFavicon = () => {
+        if (favicon) {
+          favicon.setAttribute('href', prefersDark.matches
+            ? 'assets/logo-dark-icon.png'
+            : 'assets/logo-light-icon.png');
+        }
+      };
+      updateSystemFavicon();
+      prefersDark.addEventListener('change', updateSystemFavicon);
+    })();
+  </script>
+  <title>Shridhar Pandey - Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- include: components/header.html -->
+
+  <main id="top">
+    <!-- include: components/sections/hero.html -->
+
+    <!-- include: components/sections/marquee.html -->
+
+    <!-- include: components/sections/work.html -->
+
+    <!-- include: components/sections/experience.html -->
+
+    <!-- include: components/sections/toolbox.html -->
+
+    <!-- include: components/sections/about.html -->
+
+    <!-- include: components/sections/kind-words.html -->
+
+    <!-- include: components/sections/writing.html -->
+
+    <!-- include: components/sections/education.html -->
+
+    <!-- include: components/sections/certifications.html -->
+
+    <!-- include: components/sections/contact.html -->
+  </main>
+
+  <!-- include: components/footer.html -->
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

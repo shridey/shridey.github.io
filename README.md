@@ -1,1 +1,1 @@
-# Shridhar Pandey (shridey)
+# Shridey Pandey (shridey)

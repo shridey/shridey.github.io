@@ -553,20 +553,23 @@ li { margin: 9px 0; }
 .testimonial-actions p { margin:0; color:var(--muted); font-size:.92rem; }
 .testimonial-actions .button { cursor:pointer; border:0; }
 .testimonial-dialog {
-  width:min(620px, calc(100% - 28px));
+  width:calc(100% - 20px);
   max-width:none;
-  max-height:min(88svh, 900px);
+  height:min(90svh, 760px);
+  max-height:90svh;
   padding:0;
   border:1px solid var(--line);
-  border-radius:26px;
+  border-radius:22px;
   background:var(--surface);
   color:var(--text);
   box-shadow:0 30px 100px rgba(0,0,0,.3);
-  overflow:auto;
+  overflow:hidden;
 }
 .testimonial-dialog::backdrop { background:rgba(12,11,10,.62); backdrop-filter:blur(5px); }
-.testimonial-form { padding:clamp(20px, 5vw, 34px); }
-.testimonial-form-heading { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; margin-bottom:22px; }
+.testimonial-dialog-shell { display:flex; flex-direction:column; width:100%; height:100%; min-height:0; }
+.testimonial-form-heading { display:flex; flex:0 0 auto; justify-content:space-between; align-items:flex-start; gap:18px; margin:0; padding:clamp(20px, 5vw, 28px) clamp(20px, 5vw, 34px) 16px; border-bottom:1px solid var(--line); }
+.testimonial-form { flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:8px clamp(20px, 5vw, 34px) 22px; scrollbar-gutter:stable; }
+.testimonial-dialog-footer { flex:0 0 auto; padding:12px clamp(20px, 5vw, 34px) clamp(16px, 4vw, 24px); border-top:1px solid var(--line); background:var(--surface); }
 .testimonial-form-heading h3 { margin:8px 0 5px; font:800 clamp(1.6rem, 5vw, 2rem)/1.15 "Manrope", sans-serif; letter-spacing:-.04em; }
 .testimonial-form-heading p { margin:0; color:var(--muted); font-size:.9rem; }
 .testimonial-form-close { flex:0 0 auto; }
@@ -589,11 +592,11 @@ li { margin: 9px 0; }
 .testimonial-form input:focus, .testimonial-form textarea:focus { border-color:var(--primary); box-shadow:0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent); }
 .testimonial-form-hint { display:block; margin-top:7px; color:var(--muted); font-size:.75rem; }
 .testimonial-honeypot { position:absolute !important; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
-.testimonial-form-status { min-height:1.4em; margin:12px 0 0; color:var(--muted); font-size:.85rem; }
+.testimonial-form-status { min-height:1.4em; margin:0 0 8px; color:var(--muted); font-size:.85rem; }
 .testimonial-form-status.is-error { color:#d33b42; }
 .testimonial-form-status.is-success { color:#198754; }
-.testimonial-form-actions { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:10px; margin-top:16px; }
-.testimonial-form-actions .button { cursor:pointer; }
+.testimonial-form-actions { display:flex; flex-direction:column-reverse; justify-content:flex-end; flex-wrap:wrap; gap:10px; margin-top:0; }
+.testimonial-form-actions .button { cursor:pointer; width:100%; justify-content:center; }
 /* Keep the modal's Cancel action legible in both color themes. */
 #cancel-testimonial-form {
   color: var(--text);
@@ -607,12 +610,15 @@ li { margin: 9px 0; }
 }
 .testimonial-form-actions .button:disabled { opacity:.6; cursor:wait; }
 .testimonial-submit-frame { display:none; width:0; height:0; border:0; }
+@media (min-width:640px) {
+  .testimonial-dialog { width:min(620px, calc(100% - 28px)); height:min(88svh, 760px); max-height:min(88svh, 760px); border-radius:26px; }
+  .testimonial-form-actions { flex-direction:row; }
+  .testimonial-form-actions .button { width:auto; }
+}
 @media (max-width:600px) {
   .testimonial-skeleton { min-height:245px; padding:22px; }
   .testimonial-actions { flex-direction:column; }
   .testimonial-actions .button { width:100%; justify-content:center; }
-  .testimonial-form-actions { flex-direction:column-reverse; }
-  .testimonial-form-actions .button { width:100%; justify-content:center; }
 }
 @media (prefers-reduced-motion: reduce) {
   .testimonial-skeleton::after { animation:none; }
