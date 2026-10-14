@@ -1,47 +1,47 @@
 <dialog class="testimonial-dialog" id="testimonial-dialog" aria-labelledby="testimonial-form-title">
-  <div class="testimonial-dialog-shell">
-    <div class="testimonial-form-heading">
-      <div>
-        <span class="section-kicker">A little note</span>
-        <h3 id="testimonial-form-title">Add your words.</h3>
-        <p>Share a few kind words about working, learning, or building together.</p>
-      </div>
-      <button class="icon-button testimonial-form-close" type="button" id="close-testimonial-form" aria-label="Close form">
-        <i data-lucide="x" class="icon" aria-hidden="true"></i>
-      </button>
-    </div>
+          <div class="testimonial-dialog-shell">
+            <div class="testimonial-form-heading">
+              <div>
+                <span class="section-kicker">A little note</span>
+                <h3 id="testimonial-form-title">Add your words.</h3>
+                <p>Share a few kind words about working, learning, or building together.</p>
+              </div>
+              <button class="icon-button testimonial-form-close" type="button" id="close-testimonial-form" aria-label="Close form">
+                <i data-lucide="x" class="icon" aria-hidden="true"></i>
+              </button>
+            </div>
 
-    <form class="testimonial-form" id="testimonial-form">
-      <label for="testimonial-name">Your name</label>
-      <input id="testimonial-name" name="name" autocomplete="name" maxlength="100" required />
+            <form class="testimonial-form" id="testimonial-form">
+              <label for="testimonial-name">Your name</label>
+              <input id="testimonial-name" name="name" autocomplete="name" maxlength="100" required />
 
-      <label for="testimonial-role">Role</label>
-      <input id="testimonial-role" name="role" autocomplete="organization-title" maxlength="120" placeholder="e.g. Product Manager at Acme" required />
+              <label for="testimonial-role">Role</label>
+              <input id="testimonial-role" name="role" autocomplete="organization-title" maxlength="120" placeholder="e.g. Product Manager at Acme" required />
 
-      <label for="testimonial-tagline">Tagline / organization</label>
-      <input id="testimonial-tagline" name="tagline" maxlength="160" placeholder="e.g. Acme · Data Platform" required />
+              <label for="testimonial-tagline">Tagline / organization</label>
+              <input id="testimonial-tagline" name="tagline" maxlength="160" placeholder="e.g. Acme · Data Platform" required />
 
-      <label for="testimonial-profile-url">Profile URL <span>(optional)</span></label>
-      <input id="testimonial-profile-url" name="profile-url" type="url" inputmode="url" autocomplete="url" maxlength="500" placeholder="https://linkedin.com/in/you" />
+              <label for="testimonial-profile-url">Profile URL <span>(optional)</span></label>
+              <input id="testimonial-profile-url" name="profile-url" type="url" inputmode="url" autocomplete="url" maxlength="500" placeholder="https://linkedin.com/in/you" />
 
-      <label for="testimonial-content">Your words</label>
-      <textarea id="testimonial-content" name="content" rows="5" minlength="12" maxlength="1800" required placeholder="What was it like working together?"></textarea>
-      <small class="testimonial-form-hint">Please keep it genuine and respectful. 12–1,800 characters.</small>
+              <label for="testimonial-content">Your words</label>
+              <textarea id="testimonial-content" name="content" rows="5" minlength="12" maxlength="1800" required placeholder="What was it like working together?"></textarea>
+              <small class="testimonial-form-hint">Please keep it genuine and respectful. 12–1,800 characters.</small>
 
-      <div class="testimonial-honeypot" aria-hidden="true">
-        <label for="testimonial-website">Leave this field empty</label>
-        <input id="testimonial-website" name="website" tabindex="-1" autocomplete="off" />
-      </div>
-    </form>
+              <div class="testimonial-honeypot" aria-hidden="true">
+                <label for="testimonial-website">Leave this field empty</label>
+                <input id="testimonial-website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+            </form>
 
-    <div class="testimonial-dialog-footer">
-      <p class="testimonial-form-status" id="testimonial-form-status" role="status" aria-live="polite"></p>
-      <div class="testimonial-form-actions">
-        <button class="button button-quiet" type="button" id="cancel-testimonial-form">Cancel</button>
-        <button class="button button-primary" type="submit" form="testimonial-form" id="submit-testimonial-form">
-          Send kind words <i data-lucide="send" class="icon icon-sm" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</dialog>
+            <div class="testimonial-dialog-footer">
+              <p class="testimonial-form-status" id="testimonial-form-status" role="status" aria-live="polite"></p>
+              <div class="testimonial-form-actions">
+                <button class="button button-quiet" type="button" id="cancel-testimonial-form">Cancel</button>
+                <button class="button button-primary" type="submit" form="testimonial-form" id="submit-testimonial-form">
+                  Send kind words <i data-lucide="send" class="icon icon-sm" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </dialog>
